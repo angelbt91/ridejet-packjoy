@@ -6,6 +6,16 @@ extends Node2D
 @onready var credits_button_animation: AnimationPlayer = $CreditsButtonControl/CreditsButtonAnimation
 @onready var quit_button_animation: AnimationPlayer = $QuitButtonControl/QuitButtonAnimation
 
+enum States {
+	ANIMATING_IN,
+	START_SELECTED,
+	OPTIONS_SELECTED,
+	CREDITS_SELECTED,
+	QUIT_SELECTED
+}
+
+var current_state: States = States.ANIMATING_IN
+
 func _ready() -> void:
 	$BgMusic.play()
 	animate_menu_enter()
@@ -30,6 +40,8 @@ func animate_menu_enter() -> void:
 	for item in items_to_animate:
 		await get_tree().create_timer(item.delay).timeout
 		item.animation.active = true
+	
+	
 	
 	
 	
