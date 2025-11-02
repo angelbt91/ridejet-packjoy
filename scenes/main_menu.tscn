@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vlxcu06cqdh3"]
+[gd_scene load_steps=21 format=3 uid="uid://vlxcu06cqdh3"]
 
 [ext_resource type="Script" uid="uid://b2qg5wokg4dmu" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://8wa3mgc5nvh4" path="res://sprites/ui/title.png" id="1_l6cm7"]
@@ -8,72 +8,6 @@
 
 [sub_resource type="Animation" id="Animation_8ln24"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TitleControl:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TitleControl:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-300, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TitleControl:scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TitleControl:scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TitleControl:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.549779, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("StartButtonControl:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-550, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_rtw2f"]
 resource_name = "TitleEnter"
@@ -143,9 +77,37 @@ tracks/0/keys = {
 "points": PackedFloat32Array(600, -0.25, 0, 0.233333, 5.03363, -31.2997, -0.0599409, -77.1695, 0.0663736, 70.7387, 0, -0.0947685, 108.034, 0.25, 0),
 "times": PackedFloat32Array(0, 0.305578, 0.5)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartButtonControl/StartButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5011861),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rcqid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartButtonControl/StartButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jk1qb"]
 _data = {
+&"RESET": SubResource("Animation_rcqid"),
 &"StartButtonEnter": SubResource("Animation_oa1go")
 }
 
@@ -163,10 +125,38 @@ tracks/0/keys = {
 "points": PackedFloat32Array(600, -0.25, 0, 0.233333, 5.03363, -31.2997, -0.0599409, -77.1695, 0.0663736, 70.7387, 0, -0.0947685, 108.034, 0.25, 0),
 "times": PackedFloat32Array(0, 0.305578, 0.5)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionsButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5011861),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1ajci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OptionsButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5dd4i"]
 _data = {
-&"OptionsButtonEnter": SubResource("Animation_jk1qb")
+&"OptionsButtonEnter": SubResource("Animation_jk1qb"),
+&"RESET": SubResource("Animation_1ajci")
 }
 
 [sub_resource type="Animation" id="Animation_tbmy8"]
@@ -182,10 +172,38 @@ tracks/0/keys = {
 "points": PackedFloat32Array(600, -0.25, 0, 0.233333, 5.03363, -31.2997, -0.0599409, -77.1695, 0.0663736, 70.7387, 0, -0.0947685, 108.034, 0.25, 0),
 "times": PackedFloat32Array(0, 0.305578, 0.5)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CreditsButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lgwnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CreditsButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgwnu"]
 _data = {
-&"CreditsButtonEnter": SubResource("Animation_tbmy8")
+&"CreditsButtonEnter": SubResource("Animation_tbmy8"),
+&"RESET": SubResource("Animation_lgwnu")
 }
 
 [sub_resource type="Animation" id="Animation_flqon"]
@@ -201,10 +219,38 @@ tracks/0/keys = {
 "points": PackedFloat32Array(600, -0.25, 0, 0.233333, 5.03363, -31.2997, -0.0599409, -77.1695, 0.0663736, 70.7387, 0, -0.0947685, 108.034, 0.25, 0),
 "times": PackedFloat32Array(0, 0.305578, 0.5)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QuitButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5dd4i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuitButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rcqid"]
 _data = {
-&"ExitButtonEnter": SubResource("Animation_flqon")
+&"ExitButtonEnter": SubResource("Animation_flqon"),
+&"RESET": SubResource("Animation_5dd4i")
 }
 
 [node name="MainMenu" type="Node2D"]
@@ -221,11 +267,12 @@ autoplay = false
 [node name="TitleControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -300.0
-offset_bottom = -300.0
+offset_top = -550.0
+offset_bottom = -550.0
 rotation = -0.549779
 
 [node name="TitleControlAnimation" type="AnimationPlayer" parent="TitleControl"]
+active = false
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_rtw2f")
@@ -235,11 +282,11 @@ autoplay = "TitleEnter"
 [node name="Title" type="TextureRect" parent="TitleControl"]
 modulate = Color(1, 0.0313725, 1, 1)
 custom_minimum_size = Vector2(0, 500)
-layout_mode = 2
-offset_left = -444.0
-offset_top = -536.0
-offset_right = 444.0
-offset_bottom = -36.0
+layout_mode = 0
+offset_left = -438.46948
+offset_top = -552.0
+offset_right = 449.53052
+offset_bottom = -52.0
 texture = ExtResource("1_l6cm7")
 expand_mode = 3
 
@@ -248,12 +295,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -550.0
-offset_bottom = -550.0
+offset_top = 600.0
+offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StartButtonAnimation" type="AnimationPlayer" parent="StartButtonControl"]
+active = false
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_jk1qb")
@@ -271,6 +319,7 @@ offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_wu84c")
+disabled = true
 text = "Start"
 
 [node name="OptionsButtonControl" type="Control" parent="."]
@@ -281,6 +330,7 @@ offset_right = 40.0
 offset_bottom = 640.0
 
 [node name="OptionsButtonAnimation" type="AnimationPlayer" parent="OptionsButtonControl"]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_5dd4i")
 }
@@ -294,6 +344,7 @@ offset_top = 72.0
 offset_right = 174.0
 offset_bottom = 167.0
 theme = ExtResource("4_wu84c")
+disabled = true
 text = "Options"
 
 [node name="CreditsButtonControl" type="Control" parent="."]
@@ -304,6 +355,7 @@ offset_right = 40.0
 offset_bottom = 640.0
 
 [node name="CreditsButtonAnimation" type="AnimationPlayer" parent="CreditsButtonControl"]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_lgwnu")
 }
@@ -311,12 +363,13 @@ autoplay = "CreditsButtonEnter"
 
 [node name="CreditsButton" type="Button" parent="CreditsButtonControl"]
 custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
+layout_mode = 0
 offset_left = -175.0
 offset_top = 176.0
 offset_right = 175.0
 offset_bottom = 271.0
 theme = ExtResource("4_wu84c")
+disabled = true
 text = "Credits"
 
 [node name="QuitButtonControl" type="Control" parent="."]
@@ -327,14 +380,15 @@ offset_right = 40.0
 offset_bottom = 640.0
 
 [node name="QuitButtonAnimation" type="AnimationPlayer" parent="QuitButtonControl"]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_rcqid")
 }
 autoplay = "ExitButtonEnter"
 
-[node name="ExitButton" type="Button" parent="QuitButtonControl"]
+[node name="QuitButton" type="Button" parent="QuitButtonControl"]
 custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
+layout_mode = 0
 offset_left = -176.0
 offset_top = 280.0
 offset_right = 174.0
