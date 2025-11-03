@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://vlxcu06cqdh3"]
+[gd_scene load_steps=29 format=3 uid="uid://vlxcu06cqdh3"]
 
 [ext_resource type="Script" uid="uid://b2qg5wokg4dmu" path="res://scripts/main_menu/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://8wa3mgc5nvh4" path="res://sprites/ui/title.png" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://crwrcgbb0gh3a" path="res://sprites/backgrounds/4/background.png" id="2_8ln24"]
 [ext_resource type="PackedScene" uid="uid://dxhd6bsy24xeh" path="res://scenes/bg_music.tscn" id="2_bqqt6"]
+[ext_resource type="AudioStream" uid="uid://diq45ty3ctarm" path="res://sounds/ui-hover.mp3" id="4_rcqid"]
 [ext_resource type="Theme" uid="uid://ctdokwla7g3xu" path="res://themes/ui.tres" id="4_wu84c"]
 [ext_resource type="Texture2D" uid="uid://bgjmkpjdmyrom" path="res://sprites/ui/Icon_Small_Blank_Arrow.svg" id="6_rtw2f"]
 [ext_resource type="Script" uid="uid://da6migmjw87rb" path="res://scripts/state_machine.gd" id="7_tbmy8"]
@@ -283,7 +284,12 @@ texture = ExtResource("2_8ln24")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="BgMusic" parent="." instance=ExtResource("2_bqqt6")]
+volume_db = -10.0
 autoplay = false
+
+[node name="UiHoverButton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rcqid")
+volume_db = 8.0
 
 [node name="TitleControl" type="Control" parent="."]
 layout_mode = 3
@@ -444,3 +450,8 @@ script = ExtResource("11_flqon")
 
 [node name="QuitSelectedState" type="Node" parent="MenuArrow/MenuArrowStateMachine"]
 script = ExtResource("12_rcqid")
+
+[connection signal="mouse_entered" from="StartButtonControl/StartButton" to="MenuArrow/MenuArrowStateMachine/StartSelectedState" method="_on_start_button_mouse_entered"]
+[connection signal="mouse_entered" from="OptionsButtonControl/OptionsButton" to="MenuArrow/MenuArrowStateMachine/OptionsSelectedState" method="_on_options_button_mouse_entered"]
+[connection signal="mouse_entered" from="CreditsButtonControl/CreditsButton" to="MenuArrow/MenuArrowStateMachine/CreditsSelectedState" method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_entered" from="QuitButtonControl/QuitButton" to="MenuArrow/MenuArrowStateMachine/QuitSelectedState" method="_on_quit_button_mouse_entered"]
