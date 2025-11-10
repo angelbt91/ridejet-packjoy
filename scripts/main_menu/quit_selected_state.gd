@@ -1,15 +1,17 @@
 extends ButtonStateBase
 
-@onready var quit_button: Button = $"../../../QuitButtonControl/QuitButton"
-@onready var parent_state_machine: StateMachine = $".."
+@onready var quit_button: Button = $"../../QuitButtonControl/QuitButton"
+@onready var menu_arrow_left: TextureRect = $"../../MenuArrowLeft"
+@onready var menu_arrow_right: TextureRect = $"../../MenuArrowRight"
 
 func start() -> void:
 	handle_button_focus_grab(quit_button)
+	tween_arrow_to(quit_button, menu_arrow_left, menu_arrow_right)
 	
 func end() -> void:
 	handle_button_focus_release(quit_button)
 	
-func on_input(event: InputEvent) -> void:
+func on_input() -> void:
 	if Input.is_action_pressed("UI-Up"):
 		state_machine.change_to("CreditsSelectedState")
 	if Input.is_action_pressed("UI-Down"):

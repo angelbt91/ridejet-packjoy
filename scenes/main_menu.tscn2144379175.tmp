@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://vlxcu06cqdh3"]
+[gd_scene load_steps=30 format=3 uid="uid://vlxcu06cqdh3"]
 
 [ext_resource type="Script" uid="uid://b2qg5wokg4dmu" path="res://scripts/main_menu/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://8wa3mgc5nvh4" path="res://sprites/ui/title.png" id="1_l6cm7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://ctdokwla7g3xu" path="res://themes/ui.tres" id="4_wu84c"]
 [ext_resource type="Texture2D" uid="uid://bgjmkpjdmyrom" path="res://sprites/ui/Icon_Small_Blank_Arrow.svg" id="6_rtw2f"]
 [ext_resource type="Script" uid="uid://da6migmjw87rb" path="res://scripts/state_machine.gd" id="7_tbmy8"]
+[ext_resource type="Script" uid="uid://ml7mxbb5qgtx" path="res://scripts/main_menu/button_state_base.gd" id="8_1ajci"]
 [ext_resource type="Script" uid="uid://box126ku45ktw" path="res://scripts/main_menu/animating_in_state.gd" id="8_5dd4i"]
 [ext_resource type="Script" uid="uid://de7i6cc6m4wjy" path="res://scripts/main_menu/start_selected_state.gd" id="9_lgwnu"]
 [ext_resource type="Script" uid="uid://b5qx54hcuu6el" path="res://scripts/main_menu/options_selected_state.gd" id="10_flqon"]
@@ -242,7 +243,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../MenuArrowStateMachine/AnimatingInState")
+tracks/2/path = NodePath("../MenuArrow/MenuArrowStateMachine/AnimatingInState")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -427,43 +428,35 @@ theme = ExtResource("4_wu84c")
 toggle_mode = true
 text = "Exit"
 
-[node name="MenuArrowLeft" type="TextureRect" parent="."]
-offset_left = -240.0
-offset_top = 584.0
-offset_right = -74.0
-offset_bottom = 737.0
-scale = Vector2(0.39746577, 0.39746577)
+[node name="MenuArrow" type="TextureRect" parent="."]
+offset_left = -248.0
+offset_top = 592.0
+offset_right = -82.0
+offset_bottom = 745.0
+scale = Vector2(0.3357443, 0.3357443)
 texture = ExtResource("6_rtw2f")
+script = ExtResource("8_1ajci")
 
-[node name="MenuArrowRight" type="TextureRect" parent="."]
-offset_left = 184.0
-offset_top = 584.0
-offset_right = 350.0
-offset_bottom = 737.0
-scale = Vector2(0.39746577, 0.39746577)
-texture = ExtResource("6_rtw2f")
-flip_h = true
-
-[node name="MenuArrowStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+[node name="MenuArrowStateMachine" type="Node" parent="MenuArrow" node_paths=PackedStringArray("default_state")]
 script = ExtResource("7_tbmy8")
 default_state = NodePath("AnimatingInState")
 
-[node name="AnimatingInState" type="Node" parent="MenuArrowStateMachine"]
+[node name="AnimatingInState" type="Node" parent="MenuArrow/MenuArrowStateMachine"]
 script = ExtResource("8_5dd4i")
 
-[node name="StartSelectedState" type="Node" parent="MenuArrowStateMachine"]
+[node name="StartSelectedState" type="Node" parent="MenuArrow/MenuArrowStateMachine"]
 script = ExtResource("9_lgwnu")
 
-[node name="OptionsSelectedState" type="Node" parent="MenuArrowStateMachine"]
+[node name="OptionsSelectedState" type="Node" parent="MenuArrow/MenuArrowStateMachine"]
 script = ExtResource("10_flqon")
 
-[node name="CreditsSelectedState" type="Node" parent="MenuArrowStateMachine"]
+[node name="CreditsSelectedState" type="Node" parent="MenuArrow/MenuArrowStateMachine"]
 script = ExtResource("11_flqon")
 
-[node name="QuitSelectedState" type="Node" parent="MenuArrowStateMachine"]
+[node name="QuitSelectedState" type="Node" parent="MenuArrow/MenuArrowStateMachine"]
 script = ExtResource("12_rcqid")
 
-[connection signal="mouse_entered" from="StartButtonControl/StartButton" to="MenuArrowStateMachine/StartSelectedState" method="_on_start_button_mouse_entered"]
-[connection signal="mouse_entered" from="OptionsButtonControl/OptionsButton" to="MenuArrowStateMachine/OptionsSelectedState" method="_on_options_button_mouse_entered"]
-[connection signal="mouse_entered" from="CreditsButtonControl/CreditsButton" to="MenuArrowStateMachine/CreditsSelectedState" method="_on_credits_button_mouse_entered"]
-[connection signal="mouse_entered" from="QuitButtonControl/QuitButton" to="MenuArrowStateMachine/QuitSelectedState" method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_entered" from="StartButtonControl/StartButton" to="MenuArrow/MenuArrowStateMachine/StartSelectedState" method="_on_start_button_mouse_entered"]
+[connection signal="mouse_entered" from="OptionsButtonControl/OptionsButton" to="MenuArrow/MenuArrowStateMachine/OptionsSelectedState" method="_on_options_button_mouse_entered"]
+[connection signal="mouse_entered" from="CreditsButtonControl/CreditsButton" to="MenuArrow/MenuArrowStateMachine/CreditsSelectedState" method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_entered" from="QuitButtonControl/QuitButton" to="MenuArrow/MenuArrowStateMachine/QuitSelectedState" method="_on_quit_button_mouse_entered"]

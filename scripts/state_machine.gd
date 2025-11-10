@@ -28,4 +28,4 @@ func change_to(new_state: String) -> void:
 
 func _input(event: InputEvent) -> void:
 	if current_state and current_state.has_method("on_input"):
-		current_state.on_input(event)
+		current_state.on_input()
