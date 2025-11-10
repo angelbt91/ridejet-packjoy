@@ -1,6 +1,6 @@
 class_name ButtonStateBase extends StateBase
 
-@onready var global_state_machine: StateMachine = $"../MenuArrowStateMachine"
+@onready var global_state_machine: StateMachine = $"../../MenuArrowStateMachine"
 @onready var ui_hover_button: AudioStreamPlayer2D = $"../../UiHoverButton"
 
 func handle_button_focus_grab(button: Button) -> void:
