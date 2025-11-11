@@ -1,6 +1,5 @@
-extends StateBase
+extends ButtonStateBase
 
-@onready var bg_music: AudioStreamPlayer = $"../../BgMusic"
 @onready var title_control_animation: AnimationPlayer = $"../../TitleControl/TitleControlAnimation"
 @onready var start_button: Button = $"../../StartButtonControl/StartButton"
 @onready var start_button_animation: AnimationPlayer = $"../../StartButtonControl/StartButtonAnimation"
@@ -13,16 +12,16 @@ extends StateBase
 
 
 func start() -> void:
-	bg_music.play()
+	disable_not_clicked_buttons()
 
 	var items_to_animate = [
 		{
 			"animation": title_control_animation,
-			"delay": 0.1,
+			"delay": 0.0,
 		},
 		{
 			"animation": start_button_animation,
-			"delay": 0.5,
+			"delay": 0.2,
 		},
 		{
 			"animation": options_button_animation,
@@ -39,11 +38,16 @@ func start() -> void:
 	]
 	for item in items_to_animate:
 		await get_tree().create_timer(item.delay).timeout
-		item.animation.active = true
+		item.animation.play_backwards()
 
-	await quit_button_animation.animation_finished
 
+func disable_not_clicked_buttons() -> void:
+	var buttons_to_option = {
+		state_machine.CLICKABLE_MENU_OPTIONS.START: start_button,
+		state_machine.CLICKABLE_MENU_OPTIONS.OPTIONS: options_button,
+		state_machine.CLICKABLE_MENU_OPTIONS.CREDITS: credits_button,
+	}
+	var clicked_button = buttons_to_option[state_machine.clicked_option]
 	for button: Button in [start_button, options_button, credits_button, quit_button]:
-		button.disabled = false
-
-	state_machine.change_to("StartSelectedState")
+		if clicked_button != button:
+			button.disabled = true
