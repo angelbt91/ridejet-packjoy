@@ -4,6 +4,7 @@ extends Node
 @onready var controlled_node: Node = self.get_parent()
 @export var default_state: StateBase
 var current_state: StateBase = null
+# TODO move this out from the state_machine.gd, as they are specific only for MainMenu
 enum CLICKABLE_MENU_OPTIONS { START, OPTIONS, CREDITS }
 var clicked_option: CLICKABLE_MENU_OPTIONS
 

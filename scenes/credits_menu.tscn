@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://hmkvbtesmlu0"]
+
+[ext_resource type="Theme" uid="uid://ctdokwla7g3xu" path="res://themes/ui.tres" id="1_27l6r"]
+[ext_resource type="Script" uid="uid://da6migmjw87rb" path="res://scripts/state_machine.gd" id="2_p38dx"]
+[ext_resource type="Script" uid="uid://bepmqakafsrj8" path="res://scripts/state_base.gd" id="3_oqgs5"]
+
+[sub_resource type="Animation" id="Animation_oqgs5"]
+resource_name = "CreditsBox"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2, 0),
+"points": PackedFloat32Array(640, 0, 0, 0.083333336, -106.66667, -443.06296, -0.07626947, 156.37082, 0.02144447, -30.010254, -404.47833, -0.03580326, 0, 0.052179117, 0, -464.49884, -0.018883407, 25.723083, 0.020174712, -34.297455),
+"times": PackedFloat32Array(0, 0.33333334, 0.41987467, 0.49951515)
+}
+
+[sub_resource type="Animation" id="Animation_tljk3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(640, 0, 0, 0.083333336, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tljk3"]
+_data = {
+&"CreditsBox": SubResource("Animation_oqgs5"),
+&"RESET": SubResource("Animation_tljk3")
+}
+
+[node name="CreditsMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CreditsBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -496.0
+offset_top = 640.0
+offset_right = 512.0
+offset_bottom = 1295.9996
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CreditsBox"]
+libraries = {
+&"": SubResource("AnimationLibrary_tljk3")
+}
+autoplay = "CreditsBox"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsBox"]
+layout_mode = 0
+offset_right = 1008.0
+offset_bottom = 640.0
+theme = ExtResource("1_27l6r")
+text = "# Assets
+- Ridejet: https://gamedeveloperstudio.itch.io/jet-pack-man
+- Backgrounds: https://craftpix.net/freebies/free-desert-scrolling-2d-game-backgrounds/?srsltid=AfmBOoqPFCqtfv1YDLeZTrI8k82Iz7i1_nOUEvAaNsuH6QDFBz5fVrTE
+- UI: https://penzilla.itch.io/basic-gui-bundle
+- Button selection SFX: https://pixabay.com/es/sound-effects/ui-pop-sound-316482/
+"
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="CreditsMenuStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("2_p38dx")
+default_state = NodePath("AnimatingInState")
+
+[node name="AnimatingInState" type="Node" parent="CreditsMenuStateMachine"]
+script = ExtResource("3_oqgs5")

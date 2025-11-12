@@ -40,6 +40,9 @@ func start() -> void:
 		await get_tree().create_timer(item.delay).timeout
 		item.animation.play_backwards()
 
+	await quit_button_animation.animation_finished
+	get_tree().change_scene_to_file("res://scenes/credits_menu.tscn")
+
 
 func disable_not_clicked_buttons() -> void:
 	var buttons_to_option = {

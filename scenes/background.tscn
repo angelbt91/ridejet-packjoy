@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4eitrg0f4pcm"]
+
+[ext_resource type="Texture2D" uid="uid://u84v1v3pcf0a" path="res://sprites/backgrounds/4/1.png" id="1_wisxt"]
+[ext_resource type="Texture2D" uid="uid://b4rvyrhi01wuf" path="res://sprites/backgrounds/4/2.png" id="2_wax1t"]
+[ext_resource type="Texture2D" uid="uid://dm08o3k516cxd" path="res://sprites/backgrounds/4/3.png" id="3_1tmhi"]
+[ext_resource type="Texture2D" uid="uid://c4i8oyngjang6" path="res://sprites/backgrounds/4/4.png" id="4_l5f8m"]
+[ext_resource type="Texture2D" uid="uid://omc56mts223d" path="res://sprites/backgrounds/4/5.png" id="5_6vm3t"]
+
+[node name="Background" type="Node2D"]
+
+[node name="BgLayer1" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-10, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="1" type="Sprite2D" parent="BgLayer1"]
+texture = ExtResource("1_wisxt")
+
+[node name="BgLayer2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-20, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="2" type="Sprite2D" parent="BgLayer2"]
+texture = ExtResource("2_wax1t")
+
+[node name="BgLayer3" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-100, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="3" type="Sprite2D" parent="BgLayer3"]
+texture = ExtResource("3_1tmhi")
+
+[node name="BgLayer4" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-100, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="4" type="Sprite2D" parent="BgLayer4"]
+texture = ExtResource("4_l5f8m")
+
+[node name="BgLayer5" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-400, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="5" type="Sprite2D" parent="BgLayer5"]
+texture = ExtResource("5_6vm3t")

@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ctdokwla7g3xu"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://ctdokwla7g3xu"]
 
 [ext_resource type="Texture2D" uid="uid://b4gbgffuguknv" path="res://sprites/ui/ButtonText_Large_GreyOutline_Square.svg" id="1_bhwv2"]
 [ext_resource type="Texture2D" uid="uid://caard2h7dwbk0" path="res://sprites/ui/ButtonText_Large_Blank_Square.svg" id="2_hbfgb"]
 [ext_resource type="Texture2D" uid="uid://vfu60tuug383" path="res://sprites/ui/ButtonText_Large_Blue_Square.svg" id="3_v6eyv"]
+[ext_resource type="Texture2D" uid="uid://cd4e6wi1xjpj5" path="res://sprites/ui/Box_Blank_Rounded.svg" id="4_hbfgb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhwv2"]
 content_margin_left = 120.0
@@ -31,6 +32,17 @@ texture_margin_top = 36.0
 texture_margin_right = 120.0
 texture_margin_bottom = 120.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffde8"]
+content_margin_left = 100.0
+content_margin_top = 90.0
+content_margin_right = 100.0
+content_margin_bottom = 90.0
+texture = ExtResource("4_hbfgb")
+texture_margin_left = 90.0
+texture_margin_top = 90.0
+texture_margin_right = 90.0
+texture_margin_bottom = 90.0
+
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -41,3 +53,36 @@ Button/styles/focus = SubResource("StyleBoxTexture_hbfgb")
 Button/styles/hover = SubResource("StyleBoxTexture_hbfgb")
 Button/styles/normal = SubResource("StyleBoxTexture_bhwv2")
 Button/styles/pressed = SubResource("StyleBoxTexture_v6eyv")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/paragraph_separation = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/strikethrough_alpha = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/constants/underline_alpha = 0
+RichTextLabel/font_sizes/bold_font_size = 24
+RichTextLabel/font_sizes/bold_italics_font_size = 24
+RichTextLabel/font_sizes/italics_font_size = 24
+RichTextLabel/font_sizes/mono_font_size = 24
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/icons/horizontal_rule = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = SubResource("StyleBoxTexture_ffde8")
