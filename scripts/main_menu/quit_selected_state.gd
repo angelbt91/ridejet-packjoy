@@ -20,12 +20,20 @@ func on_input() -> void:
 	if Input.is_action_pressed("UI-Down"):
 		state_machine.change_to("StartSelectedState")
 	if Input.is_action_pressed("UI-Confirm"):
-		ui_hover_button.play()
-		button.release_focus()
-		button.button_pressed = true
-		await get_tree().create_timer(0.2).timeout # to have time to see the button as pressed
-		get_tree().quit()
+		_on_button_press()
+
+
+func _on_button_press() -> void:
+	ui_hover_button.play()
+	button.release_focus()
+	button.button_pressed = true
+	await get_tree().create_timer(0.2).timeout # to have time to see the button as pressed
+	get_tree().quit()
 
 
 func _on_quit_button_mouse_entered() -> void:
 	handle_mouse_hover()
+
+
+func _on_quit_button_button_down() -> void:
+	_on_button_press()
