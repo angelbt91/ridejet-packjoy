@@ -13,8 +13,6 @@ extends StateBase
 
 
 func start() -> void:
-	bg_music.play()
-
 	var items_to_animate = [
 		{
 			"animation": title_control_animation,

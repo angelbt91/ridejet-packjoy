@@ -35,6 +35,6 @@ func change_to(new_state: String) -> void:
 	_state_start()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if current_state and current_state.has_method("on_input"):
 		current_state.on_input()
