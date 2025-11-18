@@ -41,7 +41,7 @@ func start() -> void:
 		item.animation.play_backwards()
 
 	await quit_button_animation.animation_finished
-	get_tree().change_scene_to_file("res://scenes/credits_menu.tscn")
+	get_tree().change_scene_to_file(get_scene_to_change())
 
 
 func disable_not_clicked_buttons() -> void:
@@ -54,3 +54,16 @@ func disable_not_clicked_buttons() -> void:
 	for button: Button in [start_button, options_button, credits_button, quit_button]:
 		if clicked_button != button:
 			button.disabled = true
+
+
+func get_scene_to_change() -> String:
+	match state_machine.clicked_option:
+		state_machine.CLICKABLE_MENU_OPTIONS.START:
+			return "res://scenes/credits_menu.tscn" # TODO put proper scene for START
+		state_machine.CLICKABLE_MENU_OPTIONS.CREDITS:
+			return "res://scenes/credits_menu.tscn"
+		state_machine.CLICKABLE_MENU_OPTIONS.OPTIONS:
+			return "res://scenes/options_menu.tscn"
+		_:
+			assert(false, "Unknown option")
+			return "" # to make type checker happy

@@ -6,7 +6,6 @@ extends StateBase
 
 
 func start() -> void:
-	prints("Hola?")
 	var items_to_animate = [
 		{
 			"animation": credits_box_animation,
@@ -18,7 +17,6 @@ func start() -> void:
 		},
 	]
 	for item in items_to_animate:
-		prints("Hola!")
 		await get_tree().create_timer(item.delay).timeout
 		item.animation.active = true
 

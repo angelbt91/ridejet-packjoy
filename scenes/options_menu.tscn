@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg4vw7bxw28a3"]
+
+[ext_resource type="AudioStream" uid="uid://diq45ty3ctarm" path="res://sounds/ui-hover.mp3" id="1_liyum"]
+[ext_resource type="Theme" uid="uid://ctdokwla7g3xu" path="res://themes/ui.tres" id="2_hm4m4"]
+[ext_resource type="Texture2D" uid="uid://bgjmkpjdmyrom" path="res://sprites/ui/Icon_Small_Blank_Arrow.svg" id="3_lfjc7"]
+
+[node name="OptionsMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="UiHoverButton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_liyum")
+volume_db = 8.0
+metadata/_edit_lock_ = true
+
+[node name="ResolutionControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -192.0
+offset_top = -312.0
+offset_right = 120.0
+offset_bottom = -232.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ResolutionAnimation" type="AnimationPlayer" parent="ResolutionControl"]
+
+[node name="ResolutionButton" type="Button" parent="ResolutionControl"]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 84.0
+theme = ExtResource("2_hm4m4")
+text = "1920x1080"
+metadata/_edit_lock_ = true
+
+[node name="WindowModeControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -192.0
+offset_top = -200.0
+offset_right = 120.0
+offset_bottom = -112.0
+metadata/_edit_use_anchors_ = true
+
+[node name="WindowModeAnimation" type="AnimationPlayer" parent="WindowModeControl"]
+
+[node name="WindowModeButton" type="Button" parent="WindowModeControl"]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 84.0
+theme = ExtResource("2_hm4m4")
+text = "Windowed"
+metadata/_edit_lock_ = true
+
+[node name="BackButtonControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -152.0
+offset_top = 304.0
+offset_right = 160.0
+offset_bottom = 392.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButtonAnimation" type="AnimationPlayer" parent="BackButtonControl"]
+
+[node name="BackButtonButton" type="Button" parent="BackButtonControl"]
+layout_mode = 0
+offset_right = 312.0
+offset_bottom = 84.0
+theme = ExtResource("2_hm4m4")
+text = "Back"
+metadata/_edit_lock_ = true
+
+[node name="MenuArrowLeft" type="TextureRect" parent="."]
+offset_left = -272.0
+offset_top = 1352.0
+offset_right = -106.0
+offset_bottom = 1505.0
+scale = Vector2(0.39746577, 0.39746577)
+texture = ExtResource("3_lfjc7")
+
+[node name="MenuArrowRight" type="TextureRect" parent="."]
+offset_left = 208.0
+offset_top = 1352.0
+offset_right = 374.0
+offset_bottom = 1505.0
+scale = Vector2(0.39746577, 0.39746577)
+texture = ExtResource("3_lfjc7")
+flip_h = true

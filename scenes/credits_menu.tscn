@@ -109,7 +109,7 @@ offset_right = 1008.0
 offset_bottom = 640.0
 theme = ExtResource("1_27l6r")
 bbcode_enabled = true
-text = "[b]This game mades use of the following free assets[/b]:
+text = "[b]This game makes use of the following free assets[/b]:
 - Ridejet sprite: https://gamedeveloperstudio.itch.io/jet-pack-man
 - Backgrounds: https://craftpix.net/freebies/free-desert-scrolling-2d-game-backgrounds
 - UI elements: https://penzilla.itch.io/basic-gui-bundle
