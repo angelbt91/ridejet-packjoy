@@ -1,8 +1,119 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg4vw7bxw28a3"]
+[gd_scene load_steps=19 format=3 uid="uid://bg4vw7bxw28a3"]
 
 [ext_resource type="AudioStream" uid="uid://diq45ty3ctarm" path="res://sounds/ui-hover.mp3" id="1_liyum"]
 [ext_resource type="Theme" uid="uid://ctdokwla7g3xu" path="res://themes/ui.tres" id="2_hm4m4"]
 [ext_resource type="Texture2D" uid="uid://bgjmkpjdmyrom" path="res://sprites/ui/Icon_Small_Blank_Arrow.svg" id="3_lfjc7"]
+[ext_resource type="Script" uid="uid://da6migmjw87rb" path="res://scripts/state_machine.gd" id="4_k61yy"]
+[ext_resource type="Script" uid="uid://dwmy0vpwuheib" path="res://scripts/options_menu/animating_in_state.gd" id="5_7txom"]
+[ext_resource type="Script" uid="uid://ccckcnt6fguk1" path="res://scripts/options_menu/resolution_button_selected_state.gd" id="6_2f1bn"]
+[ext_resource type="Script" uid="uid://btpepdpdxymna" path="res://scripts/options_menu/back_button_selected_state.gd" id="6_binsn"]
+[ext_resource type="Script" uid="uid://v6c7it5i0kyn" path="res://scripts/options_menu/animating_out_state.gd" id="7_2f1bn"]
+[ext_resource type="Script" uid="uid://mboiuwkrcbag" path="res://scripts/options_menu/window_mode_selected_state.gd" id="7_7txom"]
+
+[sub_resource type="Animation" id="Animation_hm4m4"]
+resource_name = "ResolutionButtonIn"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(544, -0.24999805, -2.857355, 0.103070006, 1.1780396, -309.36993, -0.06774782, 114.9003, 0.0155855175, -26.433037, -304, -0.044855863, 63.67552, 0, 0),
+"times": PackedFloat32Array(0, 0.4064869, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_lfjc7"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(544, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xsyx"]
+_data = {
+&"RESET": SubResource("Animation_lfjc7"),
+&"ResolutionButtonIn": SubResource("Animation_hm4m4")
+}
+
+[sub_resource type="Animation" id="Animation_dhn0l"]
+resource_name = "WindowModeEnter"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(632, -0.25, 0, 0.25, 0, -203.75299, -0.06998615, 38.040787, 0.02789715, -15.163422, -208, -0.05556953, 58.728836, 0, 0),
+"times": PackedFloat32Array(0, 0.40210375, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_k61yy"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(632, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7txom"]
+_data = {
+&"RESET": SubResource("Animation_k61yy"),
+&"WindowModeEnter": SubResource("Animation_dhn0l")
+}
+
+[sub_resource type="Animation" id="Animation_binsn"]
+resource_name = "BackButtonIn"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(1048, -0.25, 0, 0.25, 0, 347.45685, -0.06527767, 92.95541, 0.018055663, -25.711264, 336, -0.05842638, 61.671753, 0, 0),
+"times": PackedFloat32Array(0, 0.39166602, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_2f1bn"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1048, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i80p0"]
+_data = {
+&"BackButtonIn": SubResource("Animation_binsn"),
+&"RESET": SubResource("Animation_2f1bn")
+}
 
 [node name="OptionsMenu" type="Node2D"]
 
@@ -18,18 +129,25 @@ metadata/_edit_lock_ = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -192.0
-offset_top = -312.0
+offset_top = 544.0
 offset_right = 120.0
-offset_bottom = -232.0
+offset_bottom = 623.9999
 metadata/_edit_use_anchors_ = true
 
 [node name="ResolutionAnimation" type="AnimationPlayer" parent="ResolutionControl"]
+active = false
+libraries = {
+&"": SubResource("AnimationLibrary_3xsyx")
+}
+autoplay = "ResolutionButtonIn"
 
 [node name="ResolutionButton" type="Button" parent="ResolutionControl"]
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 84.0
 theme = ExtResource("2_hm4m4")
+disabled = true
+toggle_mode = true
 text = "1920x1080"
 metadata/_edit_lock_ = true
 
@@ -37,18 +155,25 @@ metadata/_edit_lock_ = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -192.0
-offset_top = -200.0
+offset_top = 632.0
 offset_right = 120.0
-offset_bottom = -112.0
+offset_bottom = 720.00006
 metadata/_edit_use_anchors_ = true
 
 [node name="WindowModeAnimation" type="AnimationPlayer" parent="WindowModeControl"]
+active = false
+libraries = {
+&"": SubResource("AnimationLibrary_7txom")
+}
+autoplay = "WindowModeEnter"
 
 [node name="WindowModeButton" type="Button" parent="WindowModeControl"]
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 84.0
 theme = ExtResource("2_hm4m4")
+disabled = true
+toggle_mode = true
 text = "Windowed"
 metadata/_edit_lock_ = true
 
@@ -56,34 +181,67 @@ metadata/_edit_lock_ = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -152.0
-offset_top = 304.0
+offset_top = 1048.0
 offset_right = 160.0
-offset_bottom = 392.0
+offset_bottom = 1136.0
 metadata/_edit_use_anchors_ = true
 
 [node name="BackButtonAnimation" type="AnimationPlayer" parent="BackButtonControl"]
+active = false
+libraries = {
+&"": SubResource("AnimationLibrary_i80p0")
+}
+autoplay = "BackButtonIn"
 
 [node name="BackButtonButton" type="Button" parent="BackButtonControl"]
 layout_mode = 0
 offset_right = 312.0
 offset_bottom = 84.0
 theme = ExtResource("2_hm4m4")
+disabled = true
+toggle_mode = true
 text = "Back"
 metadata/_edit_lock_ = true
 
 [node name="MenuArrowLeft" type="TextureRect" parent="."]
 offset_left = -272.0
-offset_top = 1352.0
+offset_top = 568.0
 offset_right = -106.0
-offset_bottom = 1505.0
+offset_bottom = 721.0
 scale = Vector2(0.39746577, 0.39746577)
 texture = ExtResource("3_lfjc7")
 
 [node name="MenuArrowRight" type="TextureRect" parent="."]
 offset_left = 208.0
-offset_top = 1352.0
+offset_top = 568.0
 offset_right = 374.0
-offset_bottom = 1505.0
+offset_bottom = 721.0
 scale = Vector2(0.39746577, 0.39746577)
 texture = ExtResource("3_lfjc7")
 flip_h = true
+
+[node name="OptionsMenuStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("4_k61yy")
+default_state = NodePath("AnimatingInState")
+
+[node name="AnimatingInState" type="Node" parent="OptionsMenuStateMachine"]
+script = ExtResource("5_7txom")
+
+[node name="ResolutionButtonSelectedState" type="Node" parent="OptionsMenuStateMachine"]
+script = ExtResource("6_2f1bn")
+
+[node name="WindowModeSelectedState" type="Node" parent="OptionsMenuStateMachine"]
+script = ExtResource("7_7txom")
+
+[node name="BackButtonSelectedState" type="Node" parent="OptionsMenuStateMachine"]
+script = ExtResource("6_binsn")
+
+[node name="AnimatingOutState" type="Node" parent="OptionsMenuStateMachine"]
+script = ExtResource("7_2f1bn")
+
+[connection signal="button_down" from="ResolutionControl/ResolutionButton" to="OptionsMenuStateMachine/ResolutionButtonSelectedState" method="_on_resolution_button_button_down"]
+[connection signal="mouse_entered" from="ResolutionControl/ResolutionButton" to="OptionsMenuStateMachine/ResolutionButtonSelectedState" method="_on_resolution_button_mouse_entered"]
+[connection signal="button_down" from="WindowModeControl/WindowModeButton" to="OptionsMenuStateMachine/WindowModeSelectedState" method="_on_window_mode_button_button_down"]
+[connection signal="mouse_entered" from="WindowModeControl/WindowModeButton" to="OptionsMenuStateMachine/WindowModeSelectedState" method="_on_window_mode_button_mouse_entered"]
+[connection signal="button_down" from="BackButtonControl/BackButtonButton" to="OptionsMenuStateMachine/BackButtonSelectedState" method="_on_back_button_button_button_down"]
+[connection signal="mouse_entered" from="BackButtonControl/BackButtonButton" to="OptionsMenuStateMachine/BackButtonSelectedState" method="_on_back_button_button_mouse_entered"]

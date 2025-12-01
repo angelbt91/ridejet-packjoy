@@ -2,7 +2,7 @@ extends StateBase
 
 @onready var global_state_machine: StateMachine = $".."
 @onready var ui_hover_button: AudioStreamPlayer2D = $"../../UiHoverButton"
-@onready var button: Button = $"../../BackButtonControl/BackButton"
+@onready var button: Button = $"../../BackButtonControl/BackButtonButton"
 @onready var menu_arrow_left: TextureRect = $"../../MenuArrowLeft"
 @onready var menu_arrow_right: TextureRect = $"../../MenuArrowRight"
 
@@ -20,6 +20,10 @@ func end() -> void:
 func on_input() -> void:
 	if Input.is_action_pressed("UI-Confirm"):
 		_on_button_press()
+	if Input.is_action_pressed("UI-Up"):
+		state_machine.change_to("WindowModeSelectedState")
+	if Input.is_action_pressed("UI-Down"):
+		state_machine.change_to("ResolutionButtonSelectedState")
 
 
 func _on_button_press() -> void:
@@ -39,8 +43,6 @@ func handle_mouse_hover() -> void:
 		return
 
 	global_state_machine.change_to(self.name)
-
-	_on_button_press()
 
 
 func tween_arrow_to(button_tw: Button, menu_arrow_left_tw: TextureRect, menu_arrow_right_tw: TextureRect) -> void:
@@ -64,9 +66,9 @@ func tween_arrow_to(button_tw: Button, menu_arrow_left_tw: TextureRect, menu_arr
 	right_tween.tween_property(menu_arrow_right_tw, "position", right_arrow_final_pos, 0.05)
 
 
-func _on_back_button_mouse_entered() -> void:
-	handle_mouse_hover()
-
-
-func _on_back_button_button_down() -> void:
+func _on_back_button_button_button_down() -> void:
 	_on_button_press()
+
+
+func _on_back_button_button_mouse_entered() -> void:
+	handle_mouse_hover()

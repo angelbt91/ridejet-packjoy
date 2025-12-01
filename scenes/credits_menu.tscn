@@ -183,3 +183,6 @@ script = ExtResource("4_tljk3")
 
 [node name="AnimatingOutState" type="Node" parent="CreditsMenuStateMachine"]
 script = ExtResource("7_fusw4")
+
+[connection signal="button_down" from="BackButtonControl/BackButton" to="CreditsMenuStateMachine/BackButtonSelectedState" method="_on_back_button_button_down"]
+[connection signal="mouse_entered" from="BackButtonControl/BackButton" to="CreditsMenuStateMachine/BackButtonSelectedState" method="_on_back_button_mouse_entered"]

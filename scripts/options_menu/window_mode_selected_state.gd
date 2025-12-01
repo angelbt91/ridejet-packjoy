@@ -2,7 +2,7 @@ extends StateBase
 
 @onready var global_state_machine: StateMachine = $".."
 @onready var ui_hover_button: AudioStreamPlayer2D = $"../../UiHoverButton"
-@onready var button: Button = $"../../BackButtonControl/BackButton"
+@onready var button: Button = $"../../WindowModeControl/WindowModeButton"
 @onready var menu_arrow_left: TextureRect = $"../../MenuArrowLeft"
 @onready var menu_arrow_right: TextureRect = $"../../MenuArrowRight"
 
@@ -14,22 +14,29 @@ func start() -> void:
 
 func end() -> void:
 	ui_hover_button.play()
+	button.button_pressed = false
+	button.mouse_filter = Control.MOUSE_FILTER_PASS
 	button.release_focus()
 
 
 func on_input() -> void:
-	if Input.is_action_pressed("UI-Confirm"):
+	if Input.is_action_just_pressed("UI-Confirm"):
 		_on_button_press()
+	if Input.is_action_pressed("UI-Up"):
+		state_machine.change_to("ResolutionButtonSelectedState")
+	if Input.is_action_pressed("UI-Down"):
+		state_machine.change_to("BackButtonSelectedState")
 
 
 func _on_button_press() -> void:
-	menu_arrow_left.visible = false
-	menu_arrow_right.visible = false
 	ui_hover_button.play()
 	button.mouse_filter = Control.MOUSE_FILTER_IGNORE # if hovering with mouse, ignore hover to show the button blue
 	button.release_focus()
 	button.button_pressed = true
-	state_machine.change_to("AnimatingOutState")
+	var current_mode = DisplayServer.window_get_mode()
+	var next_mode = DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN if current_mode == DisplayServer.WindowMode.WINDOW_MODE_WINDOWED else DisplayServer.WindowMode.WINDOW_MODE_WINDOWED
+	DisplayServer.window_set_mode(next_mode)
+	button.text = "Fullscreen" if next_mode == DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN else "Windowed"
 
 
 func handle_mouse_hover() -> void:
@@ -39,8 +46,6 @@ func handle_mouse_hover() -> void:
 		return
 
 	global_state_machine.change_to(self.name)
-
-	_on_button_press()
 
 
 func tween_arrow_to(button_tw: Button, menu_arrow_left_tw: TextureRect, menu_arrow_right_tw: TextureRect) -> void:
@@ -64,9 +69,9 @@ func tween_arrow_to(button_tw: Button, menu_arrow_left_tw: TextureRect, menu_arr
 	right_tween.tween_property(menu_arrow_right_tw, "position", right_arrow_final_pos, 0.05)
 
 
-func _on_back_button_mouse_entered() -> void:
-	handle_mouse_hover()
-
-
-func _on_back_button_button_down() -> void:
+func _on_window_mode_button_button_down() -> void:
 	_on_button_press()
+
+
+func _on_window_mode_button_mouse_entered() -> void:
+	handle_mouse_hover()
